@@ -1,15 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import {useState} from 'react';
-import {Button} from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import {useState} from 'react'
+import { StyleSheet, View } from 'react-native'
+import { Colors } from './utils/Colors'
+import Navbar from './components/Navbar'
+import Body from './components/Body'
 
 export default function App() {
-  const [counter, setCounter] = useState(0)
+  const [page, setPage] = useState(0)
+
+  const changePage = (page) => {
+    setPage(page)
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Counter: {counter}</Text>
-      <Button title="Click me!" color="green" onPress={()=>setCounter(counter+1)}></Button>
-      <Button title="Restart" color="red" onPress={()=>setCounter(0)}></Button>
+      <Navbar page={page} callback={changePage}/>
+      <Body page={page}/>
       <StatusBar style="auto" />
     </View>
   );
@@ -18,13 +24,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#212132',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text:{
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#f1f1f1"
+    borderTopWidth:40,
+    borderTopColor: Colors.dracula.comment,
+    backgroundColor: Colors.dracula.background,
   },
 });
