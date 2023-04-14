@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderTopWidth:40,
-    borderTopColor: Colors.dracula.comment,
-    backgroundColor: Colors.dracula.background,
+    borderTopColor: Colors.dracula.background,
   },
 });

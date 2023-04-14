@@ -18,9 +18,8 @@ const Body = ({page=0}) => {
 
 const style = StyleSheet.create({
     bodyContainer: {
-        flex: 9,
-        padding: 10,
-        backgroundColor: Colors.dracula.selection,
+        flex: 15,
+        backgroundColor: Colors.dracula.background,
     },
 })
 

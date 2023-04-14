@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity} from "react-native"
+import { View, Text, StyleSheet, TouchableOpacity, PermissionsAndroid} from "react-native"
 import { Colors } from "../utils/Colors"
 
 const NavItem = ({value, callback, selected}) => {
@@ -18,21 +18,23 @@ const NavItem = ({value, callback, selected}) => {
 
 const style = StyleSheet.create({
     navItemContainer: {
-        flex: 1,
-        alignItems:"center",
-        justifyContent:"center",
-        backgroundColor: Colors.dracula.selection,
-        height: "100%"
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: Colors.dracula.background,
+        borderRadius: 30,
+        borderWidth: 1,
+        borderColor: Colors.dracula.cyan,
+        width: "30%",
     },
     navItemContainerSelected: {
         backgroundColor: Colors.dracula.cyan,
     },
     navItemValue: {
-        color: Colors.dracula.foreground,
-        fontSize: 18,
+        color: Colors.dracula.cyan,
+        fontSize: 16,
     },
     navItemValueSelected: {
-        color: Colors.dracula.background,
+        color: Colors.dracula.selection,
     }
 })
 
