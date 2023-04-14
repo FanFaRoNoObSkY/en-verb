@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native"
+import { View, Text, StyleSheet, Dimensions} from "react-native"
 import { Colors } from "../utils/Colors"
 import * as verbs from '../utils/irregular.json'
 import Button from "../components/Button"
 import { useState, useEffect } from "react"
+import CustomTextInput from '../components/CustomTextInput'
 
 const Challenge = () => {
     const times = ["Infinitive", "Simple", "Participle"]
@@ -37,9 +38,13 @@ const Challenge = () => {
                 <Text style={style.challengeDescription}>{times[timeIndex]}</Text>
             </View>
             <Text style={style.challengeQuestion}>What is the <Text style={style.challengeCorrectTime}>{times[answerIndex]}</Text> form of the verb?</Text>
-            <TextInput style={style.challengeInput} onChangeText={(text)=>setInput(text)}></TextInput>
-            <Button value="Check!" action={()=>checkInput()} primary={true}/>
-            <Button value="Next" action={()=>nextChallenge()}/>
+
+            <CustomTextInput onChange={(text)=>setInput(text)}/>
+            
+            <View style={style.challengeButtonContainer}>
+                <Button value="Check!" action={()=>checkInput()} primary={true}/>
+                <Button value="Next" action={()=>nextChallenge()}/>
+            </View>
         </View>
     )
 }
@@ -70,23 +75,17 @@ const style = StyleSheet.create({
         color: Colors.dracula.cyan,
         fontSize: 20,
     },
-    challengeInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.dracula.cyan,
-        margin: 20,
-        padding: 10,
-        backgroundColor: Colors.dracula.selection,
-        color: Colors.dracula.foreground,
-        width: Dimensions.get('window').width*0.6,
-        fontSize: 20,
-        textAlign: "center",
-    },
     challengeQuestion: {
         color: Colors.dracula.foreground,
     },
     challengeCorrectTime: {
         color: Colors.dracula.cyan,
+    },
+    challengeButtonContainer: {
+        padding: 30,
+        rowGap: 10
     }
+
 })
 
 export default Challenge

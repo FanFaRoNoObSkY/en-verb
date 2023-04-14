@@ -14,13 +14,13 @@ const Navbar = ({page=0, callback}) => {
 
 const style = StyleSheet.create({
     navbarContainer: {
-        flex: 1,
         flexDirection: "row",
         justifyContent: "space-around",
         backgroundColor: Colors.dracula.background,
         padding: 10,
         borderBottomColor: Colors.dracula.selection,
         borderBottomWidth: 1,
+        height: 60,
     },
     navbarText: {
         color: Colors.dracula.foreground,

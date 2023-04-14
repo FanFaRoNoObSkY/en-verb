@@ -21,9 +21,11 @@ const style = StyleSheet.create({
         backgroundColor: Colors.dracula.background,
         borderColor: Colors.dracula.cyan,
         borderWidth: 1,
-        padding: 10,
         borderRadius: 5,
-        margin: 10,
+        width: 120,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
     },
     buttonPrimary: {
         backgroundColor: Colors.dracula.cyan,
