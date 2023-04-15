@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, PermissionsAndroid} from "react-native"
+import { Text, StyleSheet, TouchableOpacity } from "react-native"
 import { Colors } from "../utils/Colors"
 
 const NavItem = ({value, callback, selected}) => {
     return (
         <TouchableOpacity 
-            style={[style.navItemContainer, (selected) && style.navItemContainerSelected]} 
-            activeOpacity={0.8}
-            onPress={callback}
-            >
-                <Text style={[style.navItemValue, (selected) && style.navItemValueSelected]}>
-                    {value}
-                </Text>
+        style={[style.navItemContainer, (selected) && style.navItemContainerSelected]} 
+        activeOpacity={0.8}
+        onPress={callback}>
+            <Text style={[style.navItemValue, (selected) && style.navItemValueSelected]}>
+                {value}
+            </Text>
         </TouchableOpacity>
     )
 }

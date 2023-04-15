@@ -2,23 +2,23 @@ import { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { Colors } from "../utils/Colors"
 
-const DictItem = ({infinitive, simple, participle, translation}) => {
-    const [show, setShow] = useState(false)
+const DictItem = ({word}) => {
+    const [isShowing, setIsShowing] = useState(false)
     return (
-            <TouchableOpacity style={style.dictItemContainer} onPress={()=>setShow(!show)}>
+            <TouchableOpacity style={style.dictItemContainer} onPress={()=>setIsShowing(!isShowing)}>
                 <Text style={style.dictItemText}>
-                    {infinitive.toUpperCase()}
+                    {isShowing?"Infinitive: "+word[0]: word[0].toUpperCase()}
                 </Text>
                 {
-                    show && <>
+                    isShowing && <>
                         <Text style={style.dictItemText}>
-                            {simple}
+                            Simple: {word[1]}
                         </Text>
                         <Text style={style.dictItemText}>
-                            {participle}
+                            Participle: {word[2]}
                         </Text>
                         <Text style={style.dictItemText}>
-                            {translation.replace("-", " ")}
+                            Translation: {word[3].replace("-", " ")}
                         </Text>
                     </>
                 }

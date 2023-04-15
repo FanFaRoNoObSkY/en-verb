@@ -1,9 +1,9 @@
 import { TextInput, StyleSheet, Dimensions } from "react-native"
 import { Colors } from "../utils/Colors"
 
-const CustomTextInput = ({ onChange, prevText="" }) => {
+const CustomTextInput = ({ onChange, placeholder=""}) => {
     return (
-        <TextInput style={style.inputContainer} onChangeText={onChange}>{prevText}</TextInput>
+        <TextInput style={style.inputContainer} onChangeText={onChange}></TextInput>
     )
 }
 

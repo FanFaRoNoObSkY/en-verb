@@ -1,15 +1,15 @@
-import { Text, View, TouchableOpacity, StyleSheet} from "react-native"
+import { Text, TouchableOpacity, StyleSheet} from "react-native"
 import { Colors } from '../utils/Colors'
 
 
-const Button = ({value="", action, primary=false}) => {
+const Button = ({value="", action, primary=false, secondary=false}) => {
 
     return (
         <TouchableOpacity 
             onPress={action} 
-            style={[style.buttonContainer, primary&&style.buttonPrimary]}>
+            style={[style.buttonContainer, secondary&&style.buttonSecondary, primary&&style.buttonPrimary]}>
             <Text 
-                style={[style.buttonValue, primary&&style.buttonPrimaryValue]}>
+                style={[style.buttonValue, secondary&&style.buttonSecondaryValue, primary&&style.buttonPrimaryValue]}>
                 {value}
             </Text>
         </TouchableOpacity>
@@ -27,17 +27,25 @@ const style = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    buttonValue: {
+        fontSize: 20,
+        color: Colors.dracula.cyan,
+    },
     buttonPrimary: {
         backgroundColor: Colors.dracula.cyan,
         borderColor: Colors.dracula.cyan
     },
-    buttonValue: {
-        fontSize: 26,
-        color: Colors.dracula.foreground,
-    },
     buttonPrimaryValue: {
         color: Colors.dracula.background,
-    }
+    },
+    buttonSecondary: {
+        backgroundColor: Colors.dracula.background,
+        borderColor: Colors.dracula.orange,
+    },
+    buttonSecondaryValue: {
+        fontSize: 15,
+        color: Colors.dracula.orange,
+    },
 })
 
 

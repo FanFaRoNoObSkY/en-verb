@@ -7,7 +7,6 @@ const Navbar = ({page=0, callback}) => {
         <View style={style.navbarContainer}>
             <NavItem value="Challenge" callback={()=>callback(0)} selected={page==0}/>
             <NavItem value="Dictionary" callback={()=>callback(1)} selected={page==1}/>
-            <NavItem value="Historic" callback={()=>callback(2)} selected={page==2}/>
         </View>
     )
 }

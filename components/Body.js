@@ -1,7 +1,6 @@
-import { View, StyleSheet, Dimensions } from "react-native"
+import { View, StyleSheet } from "react-native"
 import Challenge from '../pages/Challenge'
 import Dict from '../pages/Dict'
-import Historic from '../pages/Historic'
 import { Colors } from "../utils/Colors"
 
 const Body = ({page=0}) => {
@@ -9,8 +8,7 @@ const Body = ({page=0}) => {
         <View style={style.bodyContainer}>
             {
                 page==0?<Challenge/>:
-                page==1?<Dict/>:
-                <Historic/>
+                <Dict/>
             }
         </View>
     )

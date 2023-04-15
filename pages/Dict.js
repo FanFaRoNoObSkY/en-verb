@@ -1,13 +1,12 @@
 import { ScrollView, View, StyleSheet} from "react-native"
 import DictItem from "../components/DictItem"
-import * as verbs from '../utils/irregular.json'
+import verbs from '../utils/irregular'
 import { useEffect, useState } from "react"
 import Button from "../components/Button"
 import { Colors } from "../utils/Colors"
 import CustomTextInput from "../components/CustomTextInput"
 
 const Dict = () => {
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     const [words, setWords] = useState([])
     const [index, setIndex] = useState(0)
     const wordCounter = 10
@@ -31,28 +30,26 @@ const Dict = () => {
         console.log(maxIndex)
     }
 
-    const findWord = () => {
-        alert("Searching for your input")
+    const findWord = (input) => {
+        
+        const findedWords = verbs.filter((verb)=>{
+            return verb.some((word)=>{
+                return word.toLowerCase().includes(input)
+            })
+        })
+        setWords(findedWords)
     }
 
     return (
         <View style={style.dictContainer}>
-<View style={style.dictInputContainer}>
-                <CustomTextInput/>
-                <Button value="Search" action={()=>findValue()} primary/>
+            <View style={style.dictInputContainer}>
+                <CustomTextInput onChange={(input)=>findWord(input.toLowerCase())}/>
             </View>
-           <ScrollView style={style.dictWordContainer}>
-            {
-                words.map((e,i) => {
-                return <DictItem key={i}
-                    infinitive={e[0]}
-                    simple={e[1]}
-                    participle={e[2]}
-                    translation={e[3]}/>
-                })
-            }
+
+            <ScrollView style={style.dictWordContainer}>
+                {words.map((e,i) => <DictItem key={i} word={e}/>)}
             </ScrollView>
-            
+                
             <View style={style.dictButtonContainer}>
                 <Button value="Previous" action={()=>loadPrevWords()}/>
                 <Button value="Next" action={()=>loadNextWords()}/>
@@ -75,8 +72,6 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         alignItems:"center",
         justifyContent: "center",
-        columnGap: 5,
-        flexDirection: "row"
     },
     dictButtonContainer: {
         borderTopColor: Colors.dracula.selection,
